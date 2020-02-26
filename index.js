@@ -1,9 +1,13 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
+const cors = require('cors');
 const schema = require('./schema');
 
 
 const app = express();
+
+// Allow cross-origin
+app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
   // schema: schema,
@@ -14,5 +18,5 @@ app.use('/graphql', graphqlHTTP({
 const port = process.env.PORT || 5000;
 
 app.listen(port, ()=>{
-  console.log(`Server running on port (((${port})))`);
+  console.log(`====================\nServer running on port (((${port})))\n====================`);
 });
